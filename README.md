@@ -33,6 +33,5 @@ python3 -m venv venv --system-site-packages
 pip3 install -r requirements.txt
 ufw allow 8000/tcp
 systemctl daemon-reload
-systemctl enable light.service
-systemctl start light.service
+systemctl enable --now light.service
 ```
