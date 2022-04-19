@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 async def instantaneous():
     """ Fetch the current instantaneous reading from the light sensor """
 
-    logger.info('Fetch current light intensity')
+    logger.info(f'Fetch current light intensity from {flask.request.remote_addr}')
 
     intensity = {'current': rc_time(config.pin_to_circuit), 'time': datetime.now().isoformat()}
 
