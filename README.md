@@ -56,6 +56,8 @@ sed 's/LOCAL_USER/'$USER'/g' systemd/podman-light.service | sudo tee /etc/system
 sudo chmod 644 /etc/systemd/system/podman-light.service
 # Optionally remove all images for the current user
 #podman rmi -a
+podman stop light
+podman rm light
 sudo systemctl daemon-reload
 sudo systemctl enable --now podman-light.service
 
