@@ -58,6 +58,7 @@ podman stop light
 podman rm light
 sudo systemctl daemon-reload
 sudo systemctl enable --now podman-light.service
+sudo ufw allow 8000/tcp
 
 ```
 
