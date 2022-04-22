@@ -54,8 +54,6 @@ sudo usermod -G spi $USER
 ./make_image.sh
 sed 's/LOCAL_USER/'$USER'/g' systemd/podman-light.service | sudo tee /etc/systemd/system/podman-light.service
 sudo chmod 644 /etc/systemd/system/podman-light.service
-# Optionally remove all images for the current user
-#podman rmi -a
 podman stop light
 podman rm light
 sudo systemctl daemon-reload
