@@ -2,3 +2,4 @@ Flask[async]
 gunicorn
 dateutils
 RPi.GPIO
+SpiDev
