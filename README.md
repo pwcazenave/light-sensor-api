@@ -1,8 +1,24 @@
 # Light sensor API
 
+## Hardware
+
+I've written this with two light sensor configurations in mind:
+
+1. https://pimylifeup.com/raspberry-pi-light-sensor/
+1. https://tutorials-raspberrypi.com/photoresistor-brightness-light-sensor-with-raspberry-pi/ (and https://tutorials-raspberrypi.com/mcp3008-read-out-analog-signals-on-the-raspberry-pi/)
+
+The former uses the photoresistor to time how long it takes to charge a capacitor with the light resistor in the circuit. The latter converts the light resistor values from analog to digital.
+
+
 ## Installation
 
 These instructions assume a raspos host and a raspberry pi (any generation).
+
+### Enable SPI
+
+1. `sudo raspi-config`
+1. Interface options > I4 SPI > Enabled
+1. Reboot
 
 ### Quick start
 
