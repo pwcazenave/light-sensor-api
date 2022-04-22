@@ -51,3 +51,29 @@ ufw allow 8000/tcp
 systemctl daemon-reload
 systemctl enable --now light.service
 ```
+
+## Usage
+
+Simplest way to use the API is to just curl the relevant endpoints, which are:
+
+### Timed
+
+The lightness is measured here as number of iterations needed to go from low to high on the resistor. Hence, a lower value is a higher light intensity (brighter).
+
+* `/api/v1/timed/current`
+* `/api/v1/timed/last/<period>`, where `<period>` is some integer number of seconds
+
+### Analog to digital
+
+This uses the MCP3008 to convert the analog signal to a digital one. Here, a low value is dark, high is light.
+
+* `/api/v1/analog/current`
+* `/api/v1/analog/last/<period>`, where `<period>` is some integer number of seconds
+
+For example to fetch the current instantaneous analog value:
+
+`curl http://example.com:8000/api/v1/analog/current | jq .current`
+
+To average over 60 seconds:
+
+`curl http://example.com:8000/api/v1/analog/last/60 | jq`
