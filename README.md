@@ -33,7 +33,35 @@ cd app
 gunicorn --workers=1 --bind 0.0.0.0:8000 main:app
 ```
 
-### systemd
+### podman and systemd
+
+Note: for this to work, we need podman v3.2+, which isn't yet available for Debian 11/raspos. Hence, we have to do a hacky podman install
+
+#### podman install
+
+```
+sudo apt install -y podman  # install podman so it sets up subuid/subgid for us
+wget https://github.com/mgoltzsche/podman-static/releases/download/v4.0.2/podman-linux-arm64.tar.gz
+tar -xvf podman-linux-arm64.tar.gz
+sudo cp -r podman-linux-arm64/{etc,usr} /
+reboot
+```
+
+Now we have podman v3.4+ running, we can set up the light container with systemd.
+
+```bash
+sudo usermod -G spi $USER
+./make_image.sh
+sed 's/LOCAL_USER/'$USER'/g' systemd/podman-light.service | sudo tee /etc/systemd/system/podman-light.service
+sudo chmod 644 /etc/systemd/system/podman-light.service
+# Optionally remove all images for the current user
+#podman rmi -a
+sudo systemctl daemon-reload
+sudo systemctl enable --now podman-light.service
+
+```
+
+### venv and systemd
 
 As root:
 
