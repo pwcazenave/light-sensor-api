@@ -13,7 +13,6 @@ ExecStartPre=/usr/local/bin/podman stop --ignore light
 ExecStartPre=/usr/local/bin/podman rm --ignore light
 ExecStart=/usr/local/bin/podman run --detach --publish 8000:8000 --device /dev/spidev0.0:/dev/spidev0.0 --gr>
 ExecStop=/usr/local/bin/podman stop -t 10 light
-ExecStopPost=/usr/local/bin/podman stop --ignore -t 10 light
 ExecStopPost=/usr/local/bin/podman rm --ignore light
 Type=forking
 
