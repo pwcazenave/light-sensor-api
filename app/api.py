@@ -81,9 +81,9 @@ async def analog_averaged(period):
     count = 0
     adc = MCP3008()
     while True:
-        count += 1
         now = datetime.now()
         if (now - start).total_seconds() < period:
+            count += 1
             cumulative_intensity += adc.read(channel=0)
         else:
             break
