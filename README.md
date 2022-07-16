@@ -23,7 +23,7 @@ These instructions assume a raspos host and a raspberry pi (any generation).
 ### Quick start
 
 ```bash
-git clone git@github.com/pwcazenave/light-sensor-api
+git clone git@github.com:pwcazenave/light-sensor-api
 cd light-sensor-api
 apt install python3-venv
 python3 -m venv venv --system-site-packages
@@ -52,7 +52,7 @@ reboot
 Now we have podman v3.4+ running, we can set up the light container with systemd.
 
 ```bash
-git clone git@github.com/pwcazenave/light-sensor-api
+git clone git@github.com:pwcazenave/light-sensor-api
 cd light-sensor-api
 sudo usermod -G spi $USER
 ./make_image.sh
@@ -72,7 +72,7 @@ As root:
 
 ```bash
 cd /opt
-git clone git@github.com/pwcazenave/light-sensor-api
+git clone git@github.com:pwcazenave/light-sensor-api
 mv light-sensor-api light
 cp /opt/light/systemd/light.service /etc/systemd/system/light.service
 chmod 644 /etc/systemd/system/light.service
